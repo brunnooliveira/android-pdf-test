@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Button buttonTestPdf = findViewById(R.id.button_test_pdf);
         buttonTestPdf.setOnClickListener(v -> {
             try {
-                PDFCreator.createForm();
+                PDFCreator.createInvoice(getResources());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
