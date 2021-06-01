@@ -18,7 +18,7 @@ import java.util.Date;
 
 public class PDFCreator {
 
-    public static void createTwoPages() throws IOException {
+    public static void createTwoPages(String fileName) throws IOException {
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
 
@@ -34,7 +34,7 @@ public class PDFCreator {
         canvas2.drawText("Testando PDF page 2", 40, 50, paint);
         pdfDocument.finishPage(page2);
 
-        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/testPDF.pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/" + fileName);
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -43,7 +43,7 @@ public class PDFCreator {
         pdfDocument.close();
     }
 
-    public static void createInvoice(Resources resources) throws IOException {
+    public static void createInvoice(Resources resources, String fileName) throws IOException {
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
 
@@ -114,7 +114,7 @@ public class PDFCreator {
 
         pdfDocument.finishPage(page);
 
-        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/testPDF.pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/" + fileName);
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -123,7 +123,7 @@ public class PDFCreator {
         pdfDocument.close();
     }
 
-    public static void createWithImage(Resources resources) throws IOException {
+    public static void createWithImage(Resources resources, String fileName) throws IOException {
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
 
@@ -137,7 +137,7 @@ public class PDFCreator {
         canvas.drawBitmap(scaledBitmap, 40, 50, paint);
         pdfDocument.finishPage(page);
 
-        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/testPDF.pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/" + fileName);
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -146,7 +146,7 @@ public class PDFCreator {
         pdfDocument.close();
     }
 
-    public static void createForm() throws IOException {
+    public static void createForm(String fileName) throws IOException {
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
 
@@ -204,7 +204,7 @@ public class PDFCreator {
         canvas.drawLine(10, 365, pageInfo.getPageWidth()-10, 365, paint);
 
         pdfDocument.finishPage(page);
-        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/testPDF.pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "/Documents/" + fileName);
         if (!file.exists()) {
             file.createNewFile();
         }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         Button buttonTestPdf = findViewById(R.id.button_test_pdf);
         buttonTestPdf.setOnClickListener(v -> {
             try {
-                PDFCreator.createInvoice(getResources());
+                String fileName = "invoice.pdf";
+                PDFCreator.createInvoice(getResources(), fileName);
+                Intent intent = new Intent(this, ViewerActivity.class);
+                intent.putExtra("filename", fileName);
+                startActivity(intent);
+
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
